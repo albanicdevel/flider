@@ -1,17 +1,17 @@
 using Gtk;
 
-public class Main {
-	public static int main (string[] argv) {
-		var service = new FlatpakService ();
-		service.apps_loaded.connect((apps) => {
-			foreach (FlatpakApp app in apps) {
-				print (app.name + "\t" + app.id + "\n");	
-			}
-		});
+int main (string[] args) {
+    // Створюємо GTK Application
+    var app = new Gtk.Application ("org.albanicdevel.flider", ApplicationFlags.FLAGS_NONE);
 
-		service.async_load ();
-		var loop = new GLib.MainLoop ();
-		loop.run ();
-		return 0;
-	}
+    app.activate.connect (() => {
+        // Ініціалізуємо ваш сервіс
+        var service = new FlatpakService ();
+        
+        // Створюємо та показуємо головне вікно
+        var window = new MainWindow (app, service);
+        window.present ();
+    });
+
+    return app.run (args);
 }

@@ -1,0 +1,5 @@
+[Runtime]
+name=org.albanicdevel.flider.Debug
+
+[ExtensionOf]
+ref=app/org.albanicdevel.flider/x86_64/master

@@ -1,0 +1,51 @@
+using Gtk 4.0;
+
+template $DetailWindow : Gtk.Window {
+  default-width: 500;
+  default-height: 400;
+
+  Gtk.Box {
+    orientation: vertical;
+
+    Gtk.HeaderBar {
+      show-title-buttons: true;
+    }
+
+    Gtk.Box {
+      orientation: vertical;
+      spacing: 12;
+      margin-top: 24;
+      margin-bottom: 24;
+      margin-start: 24;
+      margin-end: 24;
+      vexpand: true;
+
+      Gtk.Label name_label {
+        label: "Package";
+        styles ["title-2"]
+      }
+
+      Gtk.Label arch_label {
+        label: "Arch";
+        styles ["dim-label"]
+      }
+
+      Gtk.Box {
+        orientation: vertical;
+        spacing: 8;
+        valign: end;
+        vexpand: true;
+
+        Gtk.Button b_install {
+          label: "Install";
+          styles ["suggested-action", "pill"]
+        }
+
+        Gtk.Button b_delete {
+          label: "Delete";
+          styles ["destructive-action", "pill"]
+        }
+      }
+    }
+  }
+}
